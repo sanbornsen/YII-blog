@@ -15,13 +15,17 @@
  * The followings are the available model relations:
  * @property Post[] $posts
  */
+ 
+
+
 class User extends CActiveRecord
 {
-  /**
+	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
 	 * @return User the static model class
 	 */
+	public $images;
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
@@ -53,9 +57,10 @@ class User extends CActiveRecord
 		);
 	}
 	
-	public function beforeSave()  
-	{  
-    if ($file = getInstance($this,'image'))
+/*	public function beforeSave()  
+	{
+	//CVarDumper::dump($_FILES);
+    if ($file = CUploadedFile::getInstance($this,'image'))
     {  
 		$file->saveAs(Yii::app()->baseUrl.'/images/'.$this->image);
 		$this->image_name = $file->name;  
@@ -65,8 +70,8 @@ class User extends CActiveRecord
     }  
   
     return parent::beforeSave();  
-	}  
-
+	} 
+*/
 	/**
 	 * @return array relational rules.
 	 */
